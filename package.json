@@ -15,10 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "next build",
-    "dev": "node server.js",
-    "postinstall": "npm run build",
-    "start": "NODE_ENV=production node server.js"
+    "heroku-postbuild": "next build",
+    "start": "next start -p $PORT"
   },
   "repository": {
     "type": "git",

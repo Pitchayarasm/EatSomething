@@ -85,8 +85,11 @@ $(document).ready(function () {
         $.get("/addNote/" + id , function(data) {
             console.log(data);
             if (data.notes) {
-                $("#day").text(data.notes.day);
-                $("#comment").text(data.notes.comment);
+                $("#day").val(data.notes.day);
+                $("#comment").val(data.notes.comment);
+            } else {
+                $("#day").val("");
+                $("#comment").val("");
             }
         }).fail(function(err) {
             console.log(err)

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Eat Something</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="/recipes.js"></script>
+    <style>
+        body {
+            background-image: url("https://images.unsplash.com/photo-1503455637927-730bce8583c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+        }
+        img {
+            max-height: 250px;
+        }
+        h5 {
+            text-align: center;
+        }
+        .top {
+            width: 100%;
+            background-color: rgb(242,242,242);
+            border-color: #cccccc;
+            padding: 15px;
+        }
+        .card {
+            position: relative !important;
+            max-width: 300px;
+            height: 375px;
+            margin-bottom: 20px;
+            border: 5px solid lightgoldenrodyellow;
+        }
+        .save, .note {
+            position:absolute !important;
+            padding: 5px 12px;
+            right: 40%;
+            bottom: 7px;
+            background-color: brown;
+            color: antiquewhite;
+            border-radius: 5px;
+        }
+        .saved {
+            position:absolute !important;
+            padding: 5px 12px;
+            right: 40%;
+            bottom: 7px;
+            background-color: rosybrown;
+            color: antiquewhite;
+            border-radius: 5px;
+        }
+        #head {
+            margin: 30px 0;
+            text-align: center;
+        }
+        #home, #saved {
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button id="home" type="button">Home</button> &nbsp;&nbsp;
+                    <button id="saved" type="button">Saved Recipes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 id="head"><i class="fas fa-star"></i> Menu of The Day <i class="fas fa-star"></i></h3>
+            </div>
+        </div>
+        <div class="content">
+        </div>
+    </div>      
+      <!-- Modal for note-->
+      <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Note</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <label for="day"><b>Day: </b></label>
+                <textarea type="text" placeholder="For which day?" id="day" style="width: 100%" ></textarea> <br>
+                <label for="comment"><b>Comment: </b></label>
+                <textarea type="text" placeholder="Comment.." id="comment" style="width:100%"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveNote" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
+

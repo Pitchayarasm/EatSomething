@@ -19,7 +19,8 @@ routes(app);
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/recipesdb", { useNewUrlParser: true });
+mongoose.connect("mongodb://heroku_lcknsgjl:b1ia2smi79farnukuucrsnsi71@ds141633.mlab.com:41633/heroku_lcknsgjl");
+var db = mongoose.connection;
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");

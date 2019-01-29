@@ -22,7 +22,6 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://heroku_lcknsgjl:b1ia2smi79farnukuucrsnsi71@ds141633.mlab.com:41633/heroku_lcknsgjl");
-// var db = mongoose.connection;
 var databaseURL = 'mongodb://localhost/recipesdb'
 var mongod = process.env.MONGODB_URI || 'mongodb://heroku_lcknsgjl:b1ia2smi79farnukuucrsnsi71@ds141633.mlab.com:41633/heroku_lcknsgjl'
 if (mongod) {
@@ -30,6 +29,15 @@ if (mongod) {
 } else {
     mongoose.connect(databaseURL)
 }
+var db = mongoose.connection;
+
+    db.on("error", function(error) {
+    console.log("Mongoose Error: ", error);
+  });
+  
+  db.once("open", function() {
+    console.log("Mongoose connection successful.");
+  });
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
